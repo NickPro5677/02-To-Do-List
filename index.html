@@ -1,27 +1,67 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Metadatos Básicos -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mi To-Do List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Una aplicación simple y elegante para gestionar tus tareas diarias. Agrega, marca como completada y elimina tareas con facilidad." />
+  <meta name="theme-color" content="#667eea" />
+  <meta name="color-scheme" content="light dark" />
+  
+  <!-- Información del Sitio -->
+  <title>Mi To-Do List - Gestor de Tareas Simple</title>
+  <link rel="canonical" href="https://github.com/NickPro5677/02-To-Do-List" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✓</text></svg>" />
+  
+  <!-- Estilos -->
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="data:,">
 </head>
 <body>
   <div class="container">
-    <h1>Mi To-Do List</h1>
+    <header>
+      <h1>Mi To-Do List</h1>
+      <p class="subtitle">Organiza tu día de manera simple</p>
+    </header>
     
-    <div class="input-container">
-      <input type="text" id="taskInput" placeholder="¿Qué hay que hacer hoy?" autofocus />
-      <button id="addBtn">+</button>
-    </div>
+    <main>
+      <div class="input-container">
+        <label for="taskInput" class="sr-only">Agregar nueva tarea</label>
+        <input 
+          type="text" 
+          id="taskInput" 
+          placeholder="Agregar nueva tarea..." 
+          maxlength="100"
+          autofocus 
+          aria-label="Ingresa una nueva tarea para agregar a tu lista"
+          aria-describedby="taskHint"
+        />
+        <button 
+          id="addBtn" 
+          type="button"
+          aria-label="Agregar tarea"
+          title="Agregar tarea (Enter o clic)"
+        >
+          +
+        </button>
+      </div>
+      <p id="taskHint" class="sr-only">Presiona Enter o haz clic en el botón para agregar</p>
 
-    <ul id="taskList"></ul>
+      <ul id="taskList" role="list" aria-label="Lista de tareas"></ul>
+    </main>
 
-    <div class="footer">
-      <span id="pendingCount">0 pendientes</span>
-      <button id="clearCompleted">Limpiar completadas</button>
-    </div>
+    <footer class="footer">
+      <span id="pendingCount" aria-live="polite" aria-atomic="true">0 pendientes</span>
+      <button 
+        id="clearCompleted" 
+        type="button"
+        aria-label="Eliminar todas las tareas completadas"
+        title="Limpiar tareas marcadas como completadas"
+      >
+        Limpiar completadas
+      </button>
+    </footer>
   </div>
 
   <script src="app.js"></script>
